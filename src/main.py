@@ -18,7 +18,8 @@ def generate_report(results):
     with open('security_report.json', 'w') as f:
         json.dump(report, f, indent=4)
 
-    logging.info(f"Report generated: {report}")
+    logging.info("Report generated. See security_report.json for details.")
+
 
 
 
@@ -65,4 +66,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

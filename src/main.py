@@ -23,7 +23,7 @@ def generate_report(results):
 
 def main():
     subnet = "192.168.1.0/24"  # Scan the whole subnet
-    ports_to_check = "22,80,443,53"
+    ports_to_check = "22,80,443"
     nm = nmap.PortScanner()
     print(f"Starting scan on subnet: {subnet} for ports: {ports_to_check}")
     results = []
@@ -39,7 +39,7 @@ def main():
                     service = nm[host][proto][port].get('name', '')
                     banner = nm[host][proto][port].get('product', '')
 
-                    vulnerabilities = port in [22, 80,443,53]  # Example vulnerable ports
+                    vulnerabilities = port in [22, 80,443,]  # Example vulnerable ports
                     if vulnerabilities:
                         message = f"ALERT: {host} has vulnerable port {port} open!"
                         print(message)

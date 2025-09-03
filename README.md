@@ -22,8 +22,9 @@ To run the unit tests, use the following command:
 
 ```
 python -m unittest discover -s tests
-scanner.log and security_report.json will be created when you run the scanner; they are not included in the repository
-Users need to update the subnet to match their network!!!
+
+Warning: scanner.log and security_report.json are local files and not tracked by Git. 
+Users will generate their own results when running the script.
 ```
 
 ## Project Structure

@@ -3,17 +3,13 @@ import json
 import logging
 from datetime import datetime
 
-def setup_logging():
-    # Remove existing handlers to prevent duplicate configs
-    for handler in logging.root.handlers[:]:
-        logging.root.removeHandler(handler)
-
-    logging.basicConfig(
-        filename='scanner.log',
-        filemode='w',  # Overwrite file each run
-        level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s'
-    )
+# Configure logging
+logging.basicConfig(
+    filename='scanner.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filemode='w'  # Overwrite log file on each run.
+)
 
 def generate_report(results):
     report = {
@@ -21,26 +17,22 @@ def generate_report(results):
         "results": results,
         "recommendations": []
     }
-    if any(r['vulnerabilities'] for r in results):
-        report["recommendations"].append(
-            "Close unnecessary ports and update vulnerable services."
-        )
 
-    # Save JSON report
+    if any(r['vulnerabilities'] for r in results):
+        report["recommendations"].append("Close unnecessary ports and update vulnerable services.")
+
     with open('security_report.json', 'w') as f:
         json.dump(report, f, indent=4)
 
     logging.info("Report generated. See security_report.json for details.")
 
 def main():
-    setup_logging()  # Ensure logging is clean each run
-
-    subnet = "10.0.0.0/24"  # Example subnet (replace with yours if needed)
-    ports_to_check = "22,80,443"
+    subnet = "10.0.0.0/24"  # Scan the whole subnet ("Use your subnet here")
+    ports_to_check = "22,80,443" #Can be modified to check other ports.
     nm = nmap.PortScanner()
-
     print(f"Starting scan on subnet: {subnet} for ports: {ports_to_check}")
     results = []
+    
 
     try:
         nm.scan(hosts=subnet, ports=ports_to_check)
@@ -53,7 +45,7 @@ def main():
                     service = nm[host][proto][port].get('name', '')
                     banner = nm[host][proto][port].get('product', '')
 
-                    vulnerabilities = port in [22, 80, 443]
+                    vulnerabilities = port in [22, 80,443,]  # Example vulnerable ports
                     if vulnerabilities:
                         message = f"ALERT: {host} has vulnerable port {port} open!"
                         print(message)
@@ -74,5 +66,8 @@ def main():
     except Exception as e:
         logging.error(f"Error scanning subnet: {e}")
 
+
 if __name__ == "__main__":
     main()
+
+# End of file

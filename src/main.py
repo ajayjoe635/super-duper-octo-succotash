@@ -21,12 +21,14 @@ def generate_report(results):
     logging.info(f"Report generated: {report}")
 
 
+
 def main():
-    subnet = "192.168.1.0/24"  # Scan the whole subnet
-    ports_to_check = "22,80,443"
+    subnet = "10.0.0.0/24"  # Scan the whole subnet ("Use your subnet here")
+    ports_to_check = "22,80,443" #Can be modified to check other ports.
     nm = nmap.PortScanner()
     print(f"Starting scan on subnet: {subnet} for ports: {ports_to_check}")
     results = []
+    
 
     try:
         nm.scan(hosts=subnet, ports=ports_to_check)
@@ -63,3 +65,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

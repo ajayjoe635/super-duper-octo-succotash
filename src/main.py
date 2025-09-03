@@ -20,9 +20,6 @@ def generate_report(results):
 
     logging.info("Report generated. See security_report.json for details.")
 
-
-
-
 def main():
     subnet = "10.0.0.0/24"  # Scan the whole subnet ("Use your subnet here")
     ports_to_check = "22,80,443" #Can be modified to check other ports.

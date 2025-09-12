@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # My Python Project
 
 ## Overview
@@ -42,6 +41,4 @@ my-python-project
 
 ## License
 This project is licensed under the MIT License.
-=======
-# super-duper-octo-succotash
->>>>>>> dfd57da2600aca18631290b574b99b04c8817bb9
+

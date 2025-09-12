@@ -32,7 +32,7 @@ def main():
     nm = nmap.PortScanner()
     print(f"Starting scan on subnet: {subnet} for ports: {ports_to_check}")
     results = []
-    
+
 
     try:
         nm.scan(hosts=subnet, ports=ports_to_check)

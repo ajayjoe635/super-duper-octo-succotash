@@ -231,11 +231,9 @@ Cybersecurity Graduate | ISC2 Certified in Cybersecurity
 
 ---
 
-## 📚 Related Projects
 
-- [My OSINT Investigation Framework](https://github.com/ajayjoe635/osint-toolkit) *(if you create it)*
-- [Security Automation Scripts](https://github.com/ajayjoe635/sec-automation) *(if you create it)*
+
 
 ---
 
-**⭐ If you found this useful, please star the repo!**
+**⭐ If you found this useful, please star the repo!** 
